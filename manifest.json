@@ -1,1 +1,35 @@
-
+{
+  "name": "Google Calendar PWA",
+  "short_name": "Calendar",
+  "description": "Персональный календарь с Material Design 3",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fefbff",
+  "theme_color": "#4285f4",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%234285f4%22>📅</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 192 192%22><rect fill=%22%234285f4%22 x=%2232%22 y=%2248%22 width=%22128%22 height=%22128%22 rx=%2216%22/><path fill=%22%23ffffff%22 d=%22M96 80v32M80 96h32M112 112l-16-16%22 stroke=%22%23ffffff%22 stroke-width=%228%22/></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Новое событие",
+      "short_name": "Новое",
+      "description": "Создать новое событие",
+      "url": "./index.html?new",
+      "icons": [{
+        "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><circle cx=%2224%22 cy=%2224%22 r=%2220%22 fill=%22%234285f4%22/><path fill=%22%23ffffff%22 d=%22M24 16v16M16 24h16%22/></svg>",
+        "sizes": "96x96"
+      }]
+    }
+  ]
+}
