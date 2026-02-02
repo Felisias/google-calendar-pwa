@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" #4285f4">
+    <title>Google Calendar PWA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📅</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">☰</button>
+                <div class="date-display">
+                    <h1 class="current-date" id="currentDate"></h1>
+                    <p class="current-weekday" id="currentWeekday"></p>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="search-btn" id="searchBtn">🔍</button>
+                <button class="today-btn" id="todayBtn">Сегодня</button>
+            </div>
+        </header>
 
+        <!-- Main Calendar -->
+        <main class="calendar">
+            <div class="time-column">
+                <div class="time-header"></div>
+                <div class="time-slots" id="timeSlots"></div>
+            </div>
+            <div class="events-column" id="eventsColumn">
+                <div class="current-time-line" id="currentTimeLine"></div>
+                <div class="day-grid" id="dayGrid"></div>
+                <div class="events-container" id="eventsContainer"></div>
+            </div>
+        </main>
+
+        <!-- Add Event Button -->
+        <button class="add-event-btn" id="addEventBtn">
+            <span>+</span>
+        </button>
+
+        <!-- Bottom Sheet -->
+        <div class="bottom-sheet" id="bottomSheet">
+            <div class="sheet-header">
+                <div class="drag-handle" id="dragHandle"></div>
+            </div>
+            <div class="sheet-content">
+                <div class="sheet-collapsed">
+                    <input type="text" 
+                           class="event-title-input" 
+                           id="eventTitleInput"
+                           placeholder="Добавить название события"
+                           autocomplete="off">
+                </div>
+                <div class="sheet-expanded">
+                    <div class="form-group">
+                        <label>Цвет события</label>
+                        <div class="color-picker" id="colorPicker">
+                            <div class="color-option" data-color="#4285f4" style="background-color: #4285f4;"></div>
+                            <div class="color-option" data-color="#ea4335" style="background-color: #ea4335;"></div>
+                            <div class="color-option" data-color="#fbbc04" style="background-color: #fbbc04;"></div>
+                            <div class="color-option" data-color="#34a853" style="background-color: #34a853;"></div>
+                            <div class="color-option" data-color="#fa7b17" style="background-color: #fa7b17;"></div>
+                            <div class="color-option" data-color="#9334e6" style="background-color: #9334e6;"></div>
+                            <div class="color-option" data-color="#a142f4" style="background-color: #a142f4;"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Начало</label>
+                            <input type="time" id="startTime" class="time-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Конец</label>
+                            <input type="time" id="endTime" class="time-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Дата</label>
+                        <input type="date" id="eventDate" class="date-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Повторение</label>
+                        <select id="repeatSelect" class="select-input">
+                            <option value="none">Не повторяется</option>
+                            <option value="daily">Ежедневно</option>
+                            <option value="weekly">Еженедельно</option>
+                            <option value="monthly">Ежемесячно</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Описание</label>
+                        <textarea id="eventDescription" 
+                                  class="description-input" 
+                                  placeholder="Добавить описание"
+                                  rows="3"></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn delete-btn" id="deleteBtn">Удалить</button>
+                        <button class="btn save-btn" id="saveBtn">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Quick Actions Menu -->
+        <div class="quick-actions" id="quickActions">
+            <button class="quick-action" data-action="quick30">30 мин</button>
+            <button class="quick-action" data-action="quick60">1 час</button>
+            <button class="quick-action" data-action="quick90">1.5 часа</button>
+            <button class="quick-action" data-action="quickCustom">Своё</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
